@@ -1,0 +1,23 @@
+package 双指针;
+
+public class ReverseWords_151 {
+    //空格是个问题
+    public String reverseWords(String s) {
+        s = s.trim();                                    // 删除首尾空格
+        int j = s.length() - 1, i = j;
+        StringBuilder res = new StringBuilder();
+        while (i >= 0) {
+            while (i >= 0 && s.charAt(i) != ' ') i--;     // 搜索首个空格
+            res.append(s.substring(i + 1, j + 1) + " "); // 添加单词
+            while (i >= 0 && s.charAt(i) == ' ') i--;     // 跳过单词间空格
+            j = i;                                       // j 指向下个单词的尾字符
+        }
+        return res.toString().trim();                    // 转化为字符串并返回
+    }
+
+
+    public static void main(String[] args) {
+        String s = "a  b";//单个空格，算一个位置
+        System.out.print(s.length());
+    }
+}
