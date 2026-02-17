@@ -24,17 +24,31 @@ import java.util.Arrays;
  */
 public class PivotIndex_724 {
     //题干：整数数组   无序+不算自己
+
+    //乘法
     public static int pivotIndex(int[] nums) {
         if (nums == null){return -1;}
         int sum = Arrays.stream(nums).sum();
         int pSum = 0;
         for (int i=0; i<nums.length; i++){
-            int mid = (sum - nums[i]) / 2;
-            if (pSum == mid){return i;}
+            if (pSum * 2 + nums[i] == sum){return i;}
             pSum += nums[i];
         }
         return -1;
     }
+
+    //除法[存在问题]
+//    public static int pivotIndex(int[] nums) {
+//        if (nums == null){return -1;}
+//        int sum = Arrays.stream(nums).sum();
+//        int pSum = 0;
+//        for (int i=0; i<nums.length; i++){
+//            int mid = (sum - nums[i]) / 2;
+//            if (pSum == mid){return i;}
+//            pSum += nums[i];
+//        }
+//        return -1;
+//    }
 
     //不算自己的
 //    public static int pivotIndex(int[] nums) {
